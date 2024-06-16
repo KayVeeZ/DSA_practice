@@ -26,8 +26,8 @@ To get the most out of this repository, you should have a basic understanding of
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/your-username/dsa-learning.git
-   cd dsa-learning
+   git clone https://github.com/KayVeeZ/DSA_practice.git
+   cd DSA_practice
    ```
 2. **Set up your environment**
 
