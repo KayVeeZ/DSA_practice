@@ -29,3 +29,8 @@ To get the most out of this repository, you should have a basic understanding of
    git clone https://github.com/your-username/dsa-learning.git
    cd dsa-learning
    ```
+
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
