@@ -8,6 +8,7 @@ struct stack
     int *arr;
 };
 
+// check empty for stack
 int isEmpty(struct stack *ptr)
 {
     if(ptr->top==-1)
@@ -20,6 +21,7 @@ int isEmpty(struct stack *ptr)
     }
 }
 
+// check full for stack
 int isFull(struct stack *ptr)
 {
     if(ptr->top >= ptr->size-1)
@@ -29,6 +31,15 @@ int isFull(struct stack *ptr)
     return 0;
 }
 
+struct stack *createStack(int size)
+{
+    struct stack *s;
+    s->size = size;
+    s->top = -1;
+    s->arr = (int *)malloc(s->size*sizeof(int));
+    return s;
+}
+
 int main()
 {
     // struct stack s;
@@ -36,14 +47,20 @@ int main()
     // s.top = -1;
     // s.arr = (int *)malloc(s.size*sizeof(int));
 
-    struct stack *s;
-    (*s).size = 80;
-    s->top = -1;
-    s->arr = (int *)malloc(s->size*sizeof(int));
+    // struct stack *s;
+    // (*s).size = 80;
+    // s->top = -1;
+    // s->arr = (int *)malloc(s->size*sizeof(int));
 
     // Pushing an element manually
-    s->arr[0] = 21;
-    s->top++;
+    // s->arr[0] = 21;
+    // s->top++;
+    int size = 0;
+    scanf("Enter the size of stack you want in a positive integer number: ", &size);
+    printf("\n");
+
+    struct stack *s = createStack(size);
+
 
     // Check if stack is empty
     if(isEmpty(s))
