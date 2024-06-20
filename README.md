@@ -45,7 +45,7 @@ To get the most out of this repository, you should have a basic understanding of
 The repository is organized as follows:
 
 ```sh
-dsa-learning/
+dsa_Practice/
 ├── arrays/
 │   ├── array_basics.c
 │   └── dynamic_array.c
