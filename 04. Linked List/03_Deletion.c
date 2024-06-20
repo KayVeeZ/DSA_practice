@@ -4,7 +4,7 @@
 // creating the unit type for linked list
 struct Node{
     int data;
-    struct Node * next;
+    struct Node *next;
 };
 
 // case 1
@@ -97,12 +97,12 @@ void linkedListTraversal(struct Node* ptr)
 
 int main()
 {
-    struct Node * head;
-    struct Node * second;
-    struct Node * third;
-    struct Node * fourth;
-    struct Node * fifth;
-    struct Node * sixth;
+    struct Node *head;
+    struct Node *second;
+    struct Node *third;
+    struct Node *fourth;
+    struct Node *fifth;
+    struct Node *sixth;
 
     //  Allocate memory for nodes in the linked list in heap
     head = (struct Node *) malloc(sizeof(struct Node));
