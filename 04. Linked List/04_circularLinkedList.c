@@ -6,6 +6,27 @@ struct Node
      struct Node *next;
 };
 
+// insertion at first index of cll
+struct Node *insertAtFirst(struct Node *head, int data)
+{
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *p = head->next;
+
+    ptr->data = data;
+
+    while(p->next != head)
+    {
+        p = p->next;
+    }
+    // at this point p points to the last node of this circular linked list
+    p->next = ptr;
+    ptr->next = head;
+    head = ptr;
+
+    return head;
+}
+
+// circular linked list traversal
 void circularTraversal(struct Node *head)
 {
     struct Node *ptr = head;
@@ -18,6 +39,8 @@ void circularTraversal(struct Node *head)
     }
     while(ptr != head);
 }
+
+
 int main()
 {
     struct Node *head;
@@ -59,6 +82,12 @@ int main()
     sixth->next = head;
 
     // linked list before operations
+    circularTraversal(head);
+
+    // Case 1: insert at first Node
+    int data = 20;
+    printf("Case 1: insert at first Node\n");
+    head = insertAtFirst(head, data);
     circularTraversal(head);
 
     return 0;
