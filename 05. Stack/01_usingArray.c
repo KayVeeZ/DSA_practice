@@ -8,7 +8,7 @@ struct stack
     int *arr;
 };
 
-// check empty for stack
+// check empty for stack do video
 int isEmpty(struct stack *ptr)
 {
     if(ptr->top==-1)
