@@ -58,9 +58,17 @@ void display(struct stack *s)
     }
 }
 
-int peak()
+int peek(struct stack *s, int position)
 {
+    for (int i = s->top; i >= 0; i--)
+    {
+        if(position == i)
+        {
+            return s->arr[i];
+        }
 
+    }
+    return -1;
 }
 
 int main()
@@ -74,7 +82,7 @@ int main()
     (*s).size = 5;
     s->top = -1;
     s->arr = (int *)malloc(s->size*sizeof(int));
-
+    printf("Stack initialized successfully. \nPlease note this stack is based on an array. \nThis array has a max size of %d.\n", s->size);
     int choice = 0;
     do
     {
@@ -83,7 +91,8 @@ int main()
         printf("1. Push\n");
         printf("2. Pop\n");
         printf("3. Display\n");
-        printf("4. Exit\n");
+        printf("4. Peek\n");
+        printf("5. Exit\n");
         printf("--------------------------------------\n");
         printf("Your choice: ");
         scanf("%d", &choice);
@@ -129,9 +138,35 @@ int main()
                 display(s);
                 break;
             }
+
+            case 4:
+            if (isEmpty(s) == 1)
+            {
+                printf("Error: Stack is Empty!\n");
+                break;
+            }
+            else
+            {
+                int element = 0;
+                int position = 0;
+                printf("Which index of the stack do you want to peek at? ");
+                scanf("%d", &position);
+                element = peek(s, position);
+                if (element != -1)
+                {
+                    printf("At index %d is this element: %d\n", position, element);
+                    break;
+                }
+                else
+                {
+                    printf("No element at %d index!\n", position);
+                    break;
+                }
+            }
+            
         }
 
-    }while(choice<4);
+    }while(choice<5);
 
     printf("Thanks for using my program...\n");
     // Pushing an element manually
