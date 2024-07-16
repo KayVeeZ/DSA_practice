@@ -31,7 +31,7 @@ int isFull(struct stack *ptr)
     return 0;
 }
 
-struct stack push(struct stack *s)
+void push(struct stack *s)
 {
     int element = 0;
     printf("Please enter element to be pushed: ");
@@ -42,7 +42,7 @@ struct stack push(struct stack *s)
     // return *s;
 }
 
-struct stack pop(struct stack *s)
+void pop(struct stack *s)
 {
     int element1 = s->arr[s->top];
     s->top--;
@@ -50,7 +50,7 @@ struct stack pop(struct stack *s)
     // return *s;
 }
 
-struct stack display(struct stack *s)
+void display(struct stack *s)
 {
     for (int i = s->top; i >= 0; i--)
     {
