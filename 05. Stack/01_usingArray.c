@@ -62,7 +62,7 @@ int peek(struct stack *s, int position)
 {
     for (int i = s->top; i >= 0; i--)
     {
-        if(position == i)
+        if(s->top+1-position == i)
         {
             return s->arr[i];
         }
@@ -149,12 +149,12 @@ int main()
             {
                 int element = 0;
                 int position = 0;
-                printf("Which index of the stack do you want to peek at? ");
+                printf("Which position of the stack do you want to peek at? ");
                 scanf("%d", &position);
                 element = peek(s, position);
                 if (element != -1)
                 {
-                    printf("At index %d is this element: %d\n", position, element);
+                    printf("At position %d is this element: %d\n", position, element);
                     break;
                 }
                 else
