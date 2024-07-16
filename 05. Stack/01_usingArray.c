@@ -60,15 +60,15 @@ void display(struct stack *s)
 
 int peek(struct stack *s, int position)
 {
-    for (int i = s->top; i >= 0; i--)
+    if(s->top+1-position < 0 || s->top+1-position > s->top)
     {
-        if(s->top+1-position == i)
-        {
-            return s->arr[i];
-        }
-
+        printf("Not a valid position!\n");
+        return -1;
     }
-    return -1;
+    else
+    {
+        return s->arr[s->top+1-position];
+    }
 }
 
 int main()
@@ -78,6 +78,7 @@ int main()
     // s.top = -1;
     // s.arr = (int *)malloc(s.size*sizeof(int));
 
+    printf("Note: Please only push positive integers in this stack.\n");
     struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     (*s).size = 5;
     s->top = -1;
@@ -159,7 +160,6 @@ int main()
                 }
                 else
                 {
-                    printf("No element at %d index!\n", position);
                     break;
                 }
             }
