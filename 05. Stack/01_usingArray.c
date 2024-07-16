@@ -58,6 +58,11 @@ void display(struct stack *s)
     }
 }
 
+int peak()
+{
+
+}
+
 int main()
 {
     // struct stack s;
@@ -65,13 +70,14 @@ int main()
     // s.top = -1;
     // s.arr = (int *)malloc(s.size*sizeof(int));
 
-    struct stack *s = (struct stack *) malloc (sizeof(struct stack));
+    struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     (*s).size = 5;
     s->top = -1;
-    s->arr = (int *) malloc (s->size*sizeof(int));
+    s->arr = (int *)malloc(s->size*sizeof(int));
 
     int choice = 0;
-    do{
+    do
+    {
         printf("Enter the intended operation on stack:\n");
         printf("--------------------------------------\n");
         printf("1. Push\n");
@@ -82,6 +88,8 @@ int main()
         printf("Your choice: ");
         scanf("%d", &choice);
         printf("--------------------------------------\n");
+
+
         switch (choice)
         {
             case 1:
@@ -123,14 +131,14 @@ int main()
             }
         }
 
-    }
-    while(choice<4);
+    }while(choice<4);
 
-    printf("Thanks for using my program...\n -KV\n");
+    printf("Thanks for using my program...\n");
     // Pushing an element manually
     // s->arr[0] = 21;
     // s->top++;
-
+    free(s->arr);
+    free(s);
 
 
     return 0;
