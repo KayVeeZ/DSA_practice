@@ -21,7 +21,6 @@ int isEmpty(struct stack *ptr)
     }
 }
 
-// check full for stack
 int isFull(struct stack *ptr)
 {
     if(ptr->top >= ptr->size-1)
@@ -31,67 +30,74 @@ int isFull(struct stack *ptr)
     return 0;
 }
 
-void push(struct stack *s)
+void push(struct stack* s, char element)
 {
-    int element = 0;
-    printf("Please enter element to be pushed: ");
-    scanf("%d", &element);
-    printf("--------------------------------------\n");
-    s->arr[s->top+1] = element;
-    s->top++;
-    // return *s;
+    if(isFull(s))
+    {
+        printf("Error: Stack Overflow, cannot push %c to stack\n",element);
+    }
+    else{
+        s->top++;
+        s->arr[s->top] = element;
+    }
 }
 
-void pop(struct stack *s)
+char pop(struct stack *s)
 {
-    int element1 = s->arr[s->top];
-    s->top--;
-    printf("Popped element is %d\n", element1);
-    // return *s;
+    if(isEmpty(s))
+    {
+        printf("Error: Stack is empty! Cannot pop from the stack!\n");
+        return -1;
+    }
+    else
+    {
+        char val = s->arr[s->top];
+        s->top--;
+        return val;
+    }
 }
 
 int parenthesisMatching(char *exp)
 {
-    struct stack *s;
-    for (int i = 0; exp[i] !="\0"; i++)
+    struct stack *s = (struct stack *)malloc(sizeof(exp));
+    s->size = 100;
+    s->top = -1;
+    s->arr = (char *)malloc(s->size * sizeof(char));
+
+    for (int i = 0; exp[i] !='\0'; i++)
     {
-        if (exp[i] == "(")
+        if (exp[i] == '(')
         {
-            push(s);
+            push(s,'(');
         }
-        else if(exp[i] == ")")
+        else if(exp[i] == ')')
         {
             if(isEmpty(s))
             {
                 return 0;
             }
-            else{
                 pop(s);
-            }
         }
     }
     if (isEmpty(s))
     {
-        return 0;
+        return 1;
     }
-    return 1;
+    return 0;
 }
 
 int main()
 {
-    struct stack *s = (struct stack *)malloc(sizeof(struct stack));
-    (*s).size = 5;
-    s->top = -1;
-    s->arr = (char *)malloc(s->size*sizeof(char));
-    printf("Stack initialized successfully. \nPlease note this stack is based on an array. \nThis array has a max size of %d.\n", s->size);
+    char *exp = (char *)malloc(100 * sizeof(char));
+    if (exp==NULL) printf("Memory allocation failed");
+
+    printf("Enter the expression to be matched: ");
+    scanf("%99s", exp);
+
+    if(parenthesisMatching(exp) == 1) printf("The parenthesis is matching\n"); 
+    else printf("The parenthesis is not matching\n");
     
-
-
-
-
-
-    free(s->arr);
-    free(s);
+    
 
 
     return 0;
