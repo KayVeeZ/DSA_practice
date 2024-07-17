@@ -46,19 +46,27 @@ The repository is organized as follows:
 
 ```sh
 DSA_Practice/
-├── arrays/
-│   ├── array_basics.c
-│   └── dynamic_array.c
-├── linked-lists/
-│   ├── singly_linked_list.c
-│   └── doubly_linked_list.c
-├── stacks/
-│   └── stack_using_array.c
-├── queues/
-│   └── queue_using_linked_list.c
-├── sorting-algorithms/
-│   ├── bubble_sort.c
-│   └── quick_sort.c
+├── 01.ADTs/
+│   └── ArrayADT.c  
+├── 02. Operations on Arrays/
+│   ├── 01_insertion.c
+│   └── 02_deletion.c
+├── 03. Search Algorithms/
+│   ├── 01_linear_search.c
+│   └── 02_binary_search.c
+├── 04. Linked List/
+│   ├── 01_Creation_and_Traversal.c
+│   ├── 02_Linked_list_insertion.c
+│   ├── 03_Deletion.c
+│   ├── 04_circularLinkedList.c
+│   └── 05_doublyLinkedLists.c
+├── 05. Stack/
+│   ├── 01_usingArray.c
+│   ├── 02_stackOperationsInArray.c
+│   ├── 03_stackTopAndStackBottom.c
+│   ├── 04_usingLinkedList.c
+│   ├── 05_usingLinkedList_2.c
+│   └── 06_peek_stackTop_stackBottom.c
 └── README.md
 ```
 
