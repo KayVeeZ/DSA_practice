@@ -69,7 +69,7 @@ int match(char a, char b)
 int parenthesisMatching(char *exp)
 {
     struct stack *s = (struct stack *)malloc(sizeof(exp));
-    s->size = 100;
+    s->size = strlen(exp);
     s->top = -1;
     s->arr = (char *)malloc(s->size * sizeof(char));
 
