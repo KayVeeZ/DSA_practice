@@ -66,7 +66,11 @@ DSA_Practice/
 │   ├── 03_stackTopAndStackBottom.c
 │   ├── 04_usingLinkedList.c
 │   ├── 05_usingLinkedList_2.c
-│   └── 06_peek_stackTop_stackBottom.c
+│   ├── 06_peek_stackTop_stackBottom.c
+│   ├── 07_parenthesisMatching.c
+│   ├── 08_multiParenthesisMatching.c
+│   └── 09_infixPostfixUsingStack.c
+├── 06. Queue/
 └── README.md
 ```
 
