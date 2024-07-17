@@ -80,11 +80,12 @@ int parenthesisMatching(char *exp)
                 pop(s);
         }
     }
-    if (isEmpty(s))
-    {
-        return 1;
-    }
-    return 0;
+
+    int isBalanced = isEmpty(s);
+
+    free(s->arr);
+    free(s);
+    return isBalanced;
 }
 
 int main()
