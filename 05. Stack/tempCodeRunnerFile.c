@@ -1,0 +1,1 @@
+char *)malloc(100 * sizeof(char))
