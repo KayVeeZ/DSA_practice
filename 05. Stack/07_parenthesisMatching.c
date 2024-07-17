@@ -99,6 +99,7 @@ int main()
     if(parenthesisMatching(exp) == 1) printf("The parenthesis is matching\n"); 
     else printf("The parenthesis is not matching\n");
     
+    free(exp);
     
 
 
