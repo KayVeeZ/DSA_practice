@@ -71,10 +71,18 @@ DSA_Practice/
 │   ├── 08_multiParenthesisMatching.c
 │   └── 09_infixPostfixUsingStack.c
 ├── 06. Queue/
+│   ├── 01_queueUsingArray.c
+│   ├── 02_circularQueueUsingArray.c
+│   ├── 03_queueUsingLinkedList.c
+│   └── 04_dEndedQueueUsingArray.c
+├── 06. Sorting Algorithms/
+│   ├── 01_bubbleSort.c
+│   ├── 02_insertionSort.c
+│   └── 03_selectionSort.c
 └── README.md
 ```
 
-Each directory contains code examples and exercises for different data structures and algorithms.
+Each directory contains code examples for different data structures and algorithms.
 
 ## Resources
 
