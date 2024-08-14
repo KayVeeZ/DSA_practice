@@ -1,6 +1,5 @@
 #include<stdio.h>
 
-
 long long tribonacci(long long digit)
 {
     if(digit == 1)
