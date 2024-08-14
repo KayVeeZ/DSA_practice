@@ -2,23 +2,10 @@
 
 long long tribonacci(long long digit)
 {
-    if(digit == 1)
-    {
-        return 1;
-    }
-    else if (digit == 2)
-    {
-        return 1;
-    }
-    else if (digit == 3)
-    {
-        return 1;
-    }
-    else if (digit > 3)
-    {
-        long long result = tribonacci(digit -1)+tribonacci(digit -2)+tribonacci(digit -3);
-        return result;
-    }
+    if(digit == 1) return 1;
+    else if (digit == 2) return 1;
+    else if (digit == 3) return 1;
+    else if (digit > 3) return (tribonacci(digit -1)+tribonacci(digit -2)+tribonacci(digit -3));
 }
 
 int main()
@@ -56,6 +43,5 @@ int main()
         scanf("%d", &exit);
     } while (exit != 1);
     
-
     return 0;
 }
