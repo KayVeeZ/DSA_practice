@@ -50,5 +50,13 @@ int main()
             else printf("%d]\n",trib_list[i]);
         }
     }
+    int exit = 0;
+    do
+    {
+        printf("Input 1 to exit...");
+        scanf("%d", &exit);
+    } while (exit != 1);
+    
+
     return 0;
 }
