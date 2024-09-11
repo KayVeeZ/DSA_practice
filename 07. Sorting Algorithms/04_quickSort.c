@@ -7,13 +7,20 @@ void printArray(int *A, int n)
     }
     printf("\n");
 }
+void swap(int *A, int a, int b) // int A[] can also be used
+{
+    int temp;
+    temp = A[a];
+    A[a] = A[b];
+    A[b] = temp;
+}
 
-int partition(int A[], int low, int high)
+int partition(int *A, int low, int high)  // int A[] can also be used
 {
     int pivot = A[low];
     int i = low + 1;
     int j = high;
-    int temp;
+    // int temp;
 
     do
     {
@@ -28,20 +35,22 @@ int partition(int A[], int low, int high)
 
         if (i<j)
         {
-            temp = A[i];
-            A[i] = A[j];
-            A[j] = temp;
+            // temp = A[i];
+            // A[i] = A[j];
+            // A[j] = temp;
+            swap(A, i, j);
         }
     }while(i<j);
     
     // swap A[low] and A[j]
-    temp = A[low];
-    A[low] = A[j];
-    A[j] = temp;
+        // temp = A[low];
+        // A[low] = A[j];
+        // A[j] = temp;
+    swap(A, low, j);
     return j;
 }
 
-void quickSort(int A[], int low, int high)
+void quickSort(int *A, int low, int high) // int A[] can also be used
 {
     int partitionIndex; // index of pivot after partition
     if (low<high)
@@ -55,8 +64,8 @@ void quickSort(int A[], int low, int high)
 
 int main()
 {
-    int A[] = {3,5,2,13,12,3,2,13,45};
-    int n = 9;
+    int A[] = {3,5,2,13,12,3,2,13,45,1,29,8,42};
+    int n = 13;
     int low = 0, high;
     printArray(A, n);    // Printing the array before sorting
     quickSort(A, 0, n-1); // function to sort the array
