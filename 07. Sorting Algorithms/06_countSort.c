@@ -37,6 +37,11 @@ void countSort(int *A, int max, int arr_len)
     int i, j;
     int *count = (int *)malloc(sizeof(int) * (max + 1));
 
+    if (count == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
+
     // Initialize each element to zero
     for (i = 0; i < max + 1; i++)
     {
@@ -64,6 +69,8 @@ void countSort(int *A, int max, int arr_len)
             i++;
         }
     }
+    // Free the dynamically allocated memory
+    free(count);
 }
 
 int main()
