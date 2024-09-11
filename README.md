@@ -78,7 +78,10 @@ DSA_Practice/
 ├── 06. Sorting Algorithms/
 │   ├── 01_bubbleSort.c
 │   ├── 02_insertionSort.c
-│   └── 03_selectionSort.c
+│   ├── 03_selectionSort.c
+│   ├── 04_quickSort.c
+│   ├── 05_mergeSort.c
+│   └── 06_countSort.c
 └── README.md
 ```
 
