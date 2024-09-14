@@ -1,0 +1,2 @@
+
+        if(!BST(root->left))
