@@ -44,6 +44,15 @@ int main()
     p1->left = p3;
     p1->right = p4;
 
+          /*
+    The binary tree in this:
+        4
+       / \
+      1   6
+     / \
+    5   2
+    */
+   
     postOrder(p);
     return 0;
 }

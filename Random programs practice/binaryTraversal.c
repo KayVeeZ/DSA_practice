@@ -64,6 +64,15 @@ int main()
     p1->left = p3;
     p1->right = p4;
 
+    /*
+    The binary tree in this:
+        7
+       / \
+      2   1
+     / \
+    0   4
+    */
+
     preOrder(p);
     printf("\n");
     postOrder(p);
