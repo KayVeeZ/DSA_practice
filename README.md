@@ -75,13 +75,24 @@ DSA_Practice/
 │   ├── 02_circularQueueUsingArray.c
 │   ├── 03_queueUsingLinkedList.c
 │   └── 04_dEndedQueueUsingArray.c
-├── 06. Sorting Algorithms/
+├── 07. Sorting Algorithms/
 │   ├── 01_bubbleSort.c
 │   ├── 02_insertionSort.c
 │   ├── 03_selectionSort.c
 │   ├── 04_quickSort.c
 │   ├── 05_mergeSort.c
 │   └── 06_countSort.c
+├── 08. Trees/
+│   ├── 01_arrayRepBinTree.c
+│   ├── 02_linkedRepBinTree.c
+│   ├── 03_preOrderTraversal.c
+│   ├── 04_postOrderTraversal.c
+│   ├── 05_inOrderTraversal.c
+│   ├── 06_binarySearchTree.c
+│   ├── 07_searchRecursiveBST.c
+│   ├── 08_searchIterativeBST.c
+│   ├── 09_insertBST.c
+│   └── 10_deletionBST.c
 └── README.md
 ```
 
