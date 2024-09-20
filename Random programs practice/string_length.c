@@ -15,6 +15,7 @@ void printString(char *A, int n)
 
 int main()
 {
-    char abc[] = "Hello";
+    char abc[] = "Hello, World!";
+    printf("%d is string length.\n",STRING_LENGTH(abc));
     printString(abc, STRING_LENGTH(abc));
 }
