@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Function to calculate the length of a string
-#define STRING_LENGTH(string) (sizeof(string) - 1 / sizeof(string[0]))
+#define STRING_LENGTH(string) (sizeof(string) / sizeof((string)[0]) - 1)
 
 // Function to print string
 void printString(char *A, int n)
