@@ -1,63 +1,89 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// // Function to calculate the length of a string using a macro
-#define STRING_LENGTH(string) (sizeof(string) / sizeof((string)[0]) - 1)
+void stringLength(char *str)
+{
+    size_t length = 0;
+    while (str[length] != '\0') 
+    {
+        length++;
+    }
+
+    printf("%zu is string length.\n", length);
+}
 
 // Function to print the string
-void printString(char *A, int n)
+void printString(char *A)
 {
-    for (int i = 0; i < n; i++)
+    // Print the string until null terminator
+    for (size_t i = 0; A[i] != '\0'; i++)
     {
         printf("%c", A[i]);
     }
 }
 
-int main()
+// Function to allocate memory for a string and read it dynamically
+char* stringInput()
 {
-    // Initial allocation
     size_t capacity = 10; // Start with an initial capacity
-    char *abc = (char *)malloc(capacity * sizeof(char));
-    // if (abc == NULL) 
+    char *buffer = (char *)malloc(capacity * sizeof(char)); // Allocate initial memory
+
+    // // Check if memory allocation fails
+    // if (buffer == NULL) 
     // {
     //     printf("Memory allocation failed!\n");
-    //     return 1; // Exit if allocation fails
+    //     return NULL; // Return NULL if allocation fails
     // }
 
-    printf("Enter a string: ");
-    size_t length = 0; // Actual length of the string
+    size_t len = 0; // Actual length of the string
     int ch;
 
     // Read characters one by one
     while ((ch = getchar()) != '\n' && ch != EOF) 
     {
         // Check if we need more space
-        if (length >= capacity) 
+        if (len >= capacity) 
         {
             capacity *= 2; // Double the capacity
-            char *new_abc = (char *)realloc(abc, capacity * sizeof(char));
+            char *new_buffer = (char *)realloc(buffer, capacity * sizeof(char)); // Reallocate memory
             
-            // if (new_abc == NULL) 
+            // // Check for reallocation failure
+            // if (new_buffer == NULL) 
             // {
-            //     printf("Memory allocation failed!\n");
-            //     free(abc); // Free previously allocated memory
-            //     return 1; // Exit if reallocation fails
+            //     printf("Memory reallocation failed!\n");
+            //     free(buffer); // Free previously allocated memory
+            //     return NULL; // Return NULL if reallocation fails
             // }
 
-            abc = new_abc; // Update pointer
+            buffer = new_buffer; // Update pointer
         }
 
-        abc[length++] = (char)ch; // Store the character
+        buffer[len++] = (char)ch; // Store the character
     }
-    
-    // Null-terminate the string
-    abc[length] = '\0';
 
-    // Print the length using the macro and the string
-    printf("%zu is string length.\n", length);
-    printString(abc, length);
+    // Null-terminate the string
+    buffer[len] = '\0';
+
+    return buffer; // Return the dynamically allocated string
+}
+
+int main()
+{
+    printf("Enter a string: ");
+    char *abc = stringInput(); // Call the function to read a dynamic string
+    
+    // Check if the string was read successfully
+    if (abc == NULL) 
+    {
+        return 1; // Exit if memory allocation fails
+    }
+
+    stringLength(abc);
+
+    printString(abc);
 
     // Free the dynamically allocated memory
     free(abc);
+
     return 0;
 }

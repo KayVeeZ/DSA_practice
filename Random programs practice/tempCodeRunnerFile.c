@@ -1,5 +1,4 @@
-if (abc == NULL) 
-    // {
+if (buffer == NULL) {
     //     printf("Memory allocation failed!\n");
-    //     return 1; // Exit if allocation fails
+    //     return NULL; // Return NULL if allocation fails
     // }
