@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Function to calculate the length of a string
+#define STRING_LENGTH(string) (sizeof(string) / sizeof((string)[0]) - 1)
+
 void stringLength(char *str)
 {
     size_t length = 0;
@@ -20,6 +23,7 @@ void printString(char *A)
     {
         printf("%c", A[i]);
     }
+    printf("\n");
 }
 
 // Function to allocate memory for a string and read it dynamically
@@ -84,6 +88,12 @@ int main()
 
     // Free the dynamically allocated memory
     free(abc);
+
+    char show[] = "mai sexy programmer hu";
+
+    int len_show = STRING_LENGTH(show);
+    printString(show);
+    printf("Length of this string is %d\n", len_show);
 
     return 0;
 }
