@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Function to calculate the length of a string
+// macro to calculate the length of a string
 #define STRING_LENGTH(string) (sizeof(string) / sizeof((string)[0]) - 1)
 
 // Function to print string
