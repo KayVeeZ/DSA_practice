@@ -1,2 +1,1 @@
-
-        if(!BST(root->left))
+return node;
