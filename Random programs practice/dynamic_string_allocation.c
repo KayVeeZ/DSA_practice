@@ -76,11 +76,11 @@ int main()
     printf("Enter a string: ");
     char *abc = stringInput(); // Call the function to read a dynamic string
     
-    // Check if the string was read successfully
-    if (abc == NULL) 
-    {
-        return 1; // Exit if memory allocation fails
-    }
+    // // Check if the string was read successfully
+    // if (abc == NULL) 
+    // {
+    //     return 1; // Exit if memory allocation fails
+    // }
 
     stringLength(abc);
 
