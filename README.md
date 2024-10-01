@@ -92,7 +92,11 @@ DSA_Practice/
 │   ├── 07_searchRecursiveBST.c
 │   ├── 08_searchIterativeBST.c
 │   ├── 09_insertBST.c
-│   └── 10_deletionBST.c
+│   ├── 10_deletionBST.c
+│   └── 11_avlRotation.c
+├── 09. Graphs/
+│   ├── 01_breadthFirstSearch.c
+│   └── 02_depthFirstSearch.c
 └── README.md
 ```
 
