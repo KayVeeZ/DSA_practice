@@ -64,9 +64,9 @@ int main()
     q.arr = (int*)malloc(q.size*sizeof(int));
 
     // BFS implementation
-    int u;
-    int i = 0;
-    int visited[7] ={0,0,0,0,0,0,0};
+    int i = 0; // start from first node
+
+    int visited[7] ={0,0,0,0,0,0,0}; // array to keep track of visitation in bfs
     int a [7][7] = {
         {0,1,1,1,0,0,0},
         {1,0,0,1,0,0,0},
@@ -75,16 +75,19 @@ int main()
         {0,0,1,1,0,1,1},
         {0,0,0,0,1,0,0},
         {0,0,0,0,1,0,0},
-    };
-    printf("%d ",i);
-    visited[i] = 1;
-    enqueue(&q, i); // enqueue i for exploration
+    }; //a is adjacency matrix for the graph in the notebook
 
+    printf("%d ",i); // print first node
+
+    visited[i] = 1; // set first element to visited because we are already at first node of graph
+    enqueue(&q, i); // enqueue i for exploration
+    
     while(!isEmpty(&q))
     {
         int node = dequeue(&q);
         for (int j = 0; j < 7; j++)
         {
+            // if edge exists and node has not been visited print node
             if(a[node][j] == 1 && visited[j]==0)
             {
                 printf("%d ",j); 
