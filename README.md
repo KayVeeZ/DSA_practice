@@ -97,6 +97,9 @@ DSA_Practice/
 ├── 09. Graphs/
 │   ├── 01_breadthFirstSearch.c
 │   └── 02_depthFirstSearch.c
+├── 10. Dynamic Programming/
+│   ├── 01_dpIterqtiveFibonacci.c
+│   └── 02_dpRecursiveFibonacci.c
 └── README.md
 ```
 
