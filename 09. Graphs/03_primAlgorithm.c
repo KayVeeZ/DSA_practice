@@ -2,6 +2,26 @@
 #include<stdlib.h>
 #include<limits.h>  // For INT_MAX
 
+// Function to print the constructed MST
+void printMST(int parent[], int V, int graph[V][V])
+{
+    printf(" Edge |  Weight\n");
+    printf("---------------\n");
+    int total_cost = 0;
+    for (int i = 1; i < V; i++)  // Start from 1 to avoid printing parent[0] which is -1
+    {
+        int node = i;
+        int connected_node = parent[i];
+        if (connected_node != -1) // Ensure connected_node is valid
+        {
+            printf("  %d-%d |  %d\n", node, connected_node, graph[node][connected_node]);
+            total_cost += graph[node][connected_node]; // Add weight only if connected
+        }
+    }
+    printf("---------------\n");
+    printf("Total cost is %d\n", total_cost);
+}
+
 // Function to find the vertex with the minimum key value that is not yet included in MST
 int minKey(int key[], int mstSet[], int V)
 {
@@ -17,21 +37,6 @@ int minKey(int key[], int mstSet[], int V)
         }
     }
     return min_index;
-}
-
-// Function to print the constructed MST
-void printMST(int parent[], int V, int graph[V][V])
-{
-    printf("Edge  |  Weight\n");
-    printf("---------------\n");
-    int total_cost = 0;
-    for (int i = 1; i < V; i++) 
-    {
-        printf("%d - %d |  %d \n", parent[i], i, graph[i][parent[i]]);
-        total_cost += graph[i][parent[i]];
-    }
-    printf("---------------\n");
-    printf("Total cost is %d\n", total_cost);
 }
 
 // Function to implement Prim's algorithm for an adjacency matrix representation of the graph
@@ -66,7 +71,7 @@ void primMST(int V, int graph[V][V])
         {
             // graph[u][v] is non-zero for adjacent vertices, mstSet[v] is false for vertices not yet included in MST
             // and key[v] is greater than graph[u][v]
-            if (graph[u][v] && mstSet[v] == 0 && graph[u][v] < key[v]) 
+            if (graph[u][v] != 0 && mstSet[v] == 0 && graph[u][v] < key[v]) 
             {
                 parent[v] = u;
                 key[v] = graph[u][v];
