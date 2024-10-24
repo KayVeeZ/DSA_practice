@@ -49,7 +49,7 @@ The program will compress the file/folder into a compressed.bin file.
 
 1. Run the program:
    ```bash
-   ./file_zipper
+   ./huffmanZipper
 
 2. Enter 2 to decompress, then provide the path of the compressed file (e.g., compressed.bin) and the output directory::
    ```vbnet
