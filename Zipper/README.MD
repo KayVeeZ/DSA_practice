@@ -52,7 +52,7 @@ Note: Decompression is not working as of the moment, this will be fixed soon.
    ```bash
    ./huffmanZipper
 
-2. Enter 2 to decompress, then provide the path of the compressed file (e.g., compressed.bin) and the output directory::
+2. Enter `2` to decompress, then provide the path of the compressed file (e.g., compressed.bin) and the output directory::
    ```vbnet
    Enter 1 to compress, 2 to decompress: 2
    Enter the path of the compressed file (e.g., compressed.bin): /path/to/compressed.bin
