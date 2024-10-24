@@ -22,8 +22,8 @@ This project is a **file and folder compression/decompression tool** implemented
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/file-zipper-software.git
-   cd file-zipper-software
+   git clone https://github.com/KayVeeZ/DSA_practice/tree/main/Zipper
+   cd Zipper
 
 2. **Compile the project**:
    ```bash
@@ -36,7 +36,7 @@ After compiling the code, you can run the program from the terminal to either co
 
 1. Run the program:
    ```bash
-   ./file_zipper
+   ./huffmanZipper
 
 2. Enter 1 to compress, then provide the file or folder path when prompted:
    ```vbnet

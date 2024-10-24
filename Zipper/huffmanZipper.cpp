@@ -221,65 +221,79 @@ void readCompressedFile(const std::string& compressedFilename, const std::string
 }
 
 int main() {
+    int choice;
     std::string inputPath;
     std::string compressedFilename = "compressed.bin";
-    std::string decompressedDirectory = "decompressed_folder";
-    
-    std::cout << "Enter the file or folder path to compress: ";
-    std::getline(std::cin, inputPath);
+    std::string decompressedDirectory;
 
-    // Determine if input is file or directory
-    if (fs::is_directory(inputPath)) {
-        // Step 1: Collect files and directories and count frequencies for files
-        std::vector<FileMetadata> entries;
-        collectFilesAndDirectories(inputPath, entries, inputPath);
-        
-        std::unordered_map<std::string, std::unordered_map<char, int>> allFrequencies;
-        for (const auto& entry : entries) {
-            if (!entry.isDirectory) {
-                allFrequencies[entry.relativePath] = countFrequencies(entry.relativePath);
+    // Ask the user whether they want to compress or decompress
+    std::cout << "Enter 1 to compress, 2 to decompress: ";
+    std::cin >> choice;
+    std::cin.ignore(); // To clear the newline character from the buffer
+
+    if (choice == 1) {
+        // Compression
+        std::cout << "Enter the file or folder path to compress: ";
+        std::getline(std::cin, inputPath);
+
+        // Determine if input is file or directory
+        if (fs::is_directory(inputPath)) {
+            std::vector<FileMetadata> entries;
+            collectFilesAndDirectories(inputPath, entries, inputPath);
+            
+            std::unordered_map<std::string, std::unordered_map<char, int>> allFrequencies;
+            for (const auto& entry : entries) {
+                if (!entry.isDirectory) {
+                    allFrequencies[entry.relativePath] = countFrequencies(entry.relativePath);
+                }
             }
+            
+            std::unordered_map<std::string, HuffmanNode*> allRoots;
+            for (const auto& pair : allFrequencies) {
+                allRoots[pair.first] = buildHuffmanTree(pair.second);
+            }
+            
+            std::unordered_map<std::string, std::unordered_map<char, std::string>> allHuffmanCodes;
+            for (const auto& pair : allRoots) {
+                allHuffmanCodes[pair.first] = getHuffmanCodes(pair.second);
+            }
+            
+            writeCompressedFile(compressedFilename, entries, allHuffmanCodes);
+        } else if (fs::is_regular_file(inputPath)) {
+            std::vector<FileMetadata> entries;
+            entries.push_back({fs::relative(inputPath).string(), fs::file_size(inputPath), false});
+            
+            std::unordered_map<std::string, std::unordered_map<char, int>> allFrequencies;
+            allFrequencies[entries[0].relativePath] = countFrequencies(inputPath);
+            
+            HuffmanNode* root = buildHuffmanTree(allFrequencies[entries[0].relativePath]);
+            
+            std::unordered_map<std::string, std::unordered_map<char, std::string>> allHuffmanCodes;
+            allHuffmanCodes[entries[0].relativePath] = getHuffmanCodes(root);
+            
+            writeCompressedFile(compressedFilename, entries, allHuffmanCodes);
+        } else {
+            std::cerr << "Invalid path. Please enter a valid file or directory path." << std::endl;
+            return 1;
         }
+
+    } else if (choice == 2) {
+        // Decompression
+        std::cout << "Enter the path of the compressed file (e.g., compressed.bin): ";
+        std::getline(std::cin, compressedFilename);
         
-        // Step 2: Build Huffman Trees for each file
-        std::unordered_map<std::string, HuffmanNode*> allRoots;
-        for (const auto& pair : allFrequencies) {
-            allRoots[pair.first] = buildHuffmanTree(pair.second);
+        std::cout << "Enter the directory to decompress into (enter 0 for current directory): ";
+        std::getline(std::cin, decompressedDirectory);
+        
+        if (decompressedDirectory == "0") {
+            decompressedDirectory = fs::current_path().string();
         }
-        
-        // Step 3: Generate Huffman Codes for each file
-        std::unordered_map<std::string, std::unordered_map<char, std::string>> allHuffmanCodes;
-        for (const auto& pair : allRoots) {
-            allHuffmanCodes[pair.first] = getHuffmanCodes(pair.second);
-        }
-        
-        // Step 4: Write compressed folder
-        writeCompressedFile(compressedFilename, entries, allHuffmanCodes);
-        
-    } else if (fs::is_regular_file(inputPath)) {
-        // Handle single file compression
-        std::vector<FileMetadata> entries;
-        entries.push_back({fs::relative(inputPath).string(), fs::file_size(inputPath), false});
-        
-        std::unordered_map<std::string, std::unordered_map<char, int>> allFrequencies;
-        allFrequencies[entries[0].relativePath] = countFrequencies(inputPath);
-        
-        // Step 2: Build Huffman Tree
-        HuffmanNode* root = buildHuffmanTree(allFrequencies[entries[0].relativePath]);
-        
-        // Step 3: Generate Huffman Codes
-        std::unordered_map<std::string, std::unordered_map<char, std::string>> allHuffmanCodes;
-        allHuffmanCodes[entries[0].relativePath] = getHuffmanCodes(root);
-        
-        // Step 4: Write compressed file
-        writeCompressedFile(compressedFilename, entries, allHuffmanCodes);
+
+        readCompressedFile(compressedFilename, decompressedDirectory);
     } else {
-        std::cerr << "Invalid path. Please enter a valid file or directory path." << std::endl;
+        std::cerr << "Invalid choice. Please enter 1 to compress or 2 to decompress." << std::endl;
         return 1;
     }
 
-    // Decompression (for testing purpose)
-    readCompressedFile(compressedFilename, decompressedDirectory);
-    
     return 0;
 }
