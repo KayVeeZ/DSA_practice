@@ -38,7 +38,7 @@ After compiling the code, you can run the program from the terminal to either co
    ```bash
    ./huffmanZipper
 
-2. Enter 1 to compress, then provide the file or folder path when prompted:
+2. Enter `1` to compress, then provide the file or folder path when prompted:
    ```vbnet
    Enter 1 to compress, 2 to decompress: 1
    Enter the file or folder path to compress: /path/to/file/or/folder
@@ -52,13 +52,13 @@ Note: Decompression is not working as of the moment, this will be fixed soon.
    ```bash
    ./huffmanZipper
 
-2. Enter `2` to decompress, then provide the path of the compressed file (e.g., compressed.bin) and the output directory::
+2. Enter `2` to decompress, then provide the path of the **compressed file** (e.g., `compressed.bin`) and the output directory::
    ```vbnet
    Enter 1 to compress, 2 to decompress: 2
    Enter the path of the compressed file (e.g., compressed.bin): /path/to/compressed.bin
    Enter the directory to decompress into (enter 0 for current directory): /path/to/output/directory
 
-If you enter 0, the decompressed files will be extracted in the current directory.
+If you enter `0`, the decompressed files will be extracted in the current directory.
 
 ## Future Improvements
 - Add support for multi-threaded compression.
