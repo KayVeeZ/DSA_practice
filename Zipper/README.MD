@@ -66,3 +66,5 @@ If you enter `0`, the decompressed files will be extracted in the current direct
 - Add a progress indicator during compression and decompression.
 
 ## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
