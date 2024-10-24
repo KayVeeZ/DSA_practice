@@ -27,7 +27,7 @@ This project is a **file and folder compression/decompression tool** implemented
 
 2. **Compile the project**:
    ```bash
-   g++ -std=c++17 file_zipper.cpp -o file_zipper
+   g++ -std=c++17 huffmanZipper.cpp -o huffmanZipper
 
 ## Usage
 After compiling the code, you can run the program from the terminal to either compress or decompress files/folders.
