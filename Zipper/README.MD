@@ -47,6 +47,7 @@ The program will compress the file/folder into a compressed.bin file.
 
 ## Decompressing files
 
+Note: Decompression is not working as of the moment, this will be fixed soon.
 1. Run the program:
    ```bash
    ./huffmanZipper
