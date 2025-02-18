@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 // Function to initialize array with a specific value (-1 for memoization)
 void init_array(long long *arr, int size)
@@ -45,13 +46,16 @@ int main()
     long long trib_list[digit];  // Array to store all values of the tribonacci sequence
 
     // Store values of the whole sequence in the array
+    clock_t begin = clock();
     for (long long i = 0; i < digit; i++)
     {
         trib_list[i] = tribonacci(i, store);
     }
-
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     // Print the tribonacci sequence
     printf("The tribonacci sequence for the provided number is:\n[");
+    printf("%lf is time taken by c.\n",time_spent);
     for (long long i = 0; i < digit; i++)
     {
         if (i == digit - 1)  // Last element, no comma
